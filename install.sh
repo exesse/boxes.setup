@@ -44,7 +44,7 @@ mv ${_install_dir} $HOME/backup${_install_dir} >> /dev/null 2>&1
 mkdir -p ${_install_dir} && cd ${_install_dir}
 
 # Clone required files into _install_dir
-git clone https://github.com/exesse/boxes.setup ${_install_dir} #>> /dev/null 2>&1
+git clone https://github.com/exesse/boxes.setup ${_install_dir} >> /dev/null 2>&1
 sleep 10
 
 # Start of the installation
@@ -57,16 +57,16 @@ mkdir -p ${_install_dir} && cd ${_install_dir}
 # Install required packages while sudo is active
 case ${OS_VERSION} in
    Darwin)
-       git clone https://github.com/Homebrew/brew $HOME/.brew #>> /dev/null 2>&1
-       xcode-select --install #>> /dev/null 2>&1
-       brew install vim ctags cmake #>> /dev/null 2>&1
+       git clone https://github.com/Homebrew/brew $HOME/.brew >> /dev/null 2>&1
+       xcode-select --install >> /dev/null 2>&1
+       brew install vim ctags cmake >> /dev/null 2>&1
        _progress=20
        ProgressBar ${_progress} ${_end}
        ;;
    Ubuntu)
-       sudo apt update #>> /dev/null 2>&1
-       sudo apt install -qqy plank gnome-tweak-tool git build-essential cmake vim-nox python3-dev python3-pip zsh exuberant-ctags #>> /dev/null 2>&1
-       sudo apt remove -qqy gnome-shell-extension-ubuntu-dock #>> /dev/null 2>&1
+       sudo apt update >> /dev/null 2>&1
+       sudo apt install -qqy plank gnome-tweak-tool git build-essential cmake vim-nox python3-dev python3-pip zsh exuberant-ctags >> /dev/null 2>&1
+       sudo apt remove -qqy gnome-shell-extension-ubuntu-dock >> /dev/null 2>&1
        _progress=20
        ProgressBar ${_progress} ${_end}
 	   tar -xf ${_install_dir}/files/exesse.tar.xz && mkdir -p ~/.themes/ && cp -r ${_install_dir}/themes/* ~/.themes/
@@ -74,12 +74,12 @@ case ${OS_VERSION} in
 	   mkdir ~/.local/share/plank/themes/ -p && cp -r ${_install_dir}/plank/* ~/.local/share/plank/themes/
        _progress=30
        ProgressBar ${_progress} ${_end}
-	   git clone https://github.com/yozoon/gnome-shell-extension-blyr.git $HOME/.bin/gnome-shell-extension-blyr #>> /dev/null 2>&1
-       cd $HOME/.bin/gnome-shell-extension-blyr/ && make local-install #>> /dev/null 2>&1
+	   git clone https://github.com/yozoon/gnome-shell-extension-blyr.git $HOME/.bin/gnome-shell-extension-blyr >> /dev/null 2>&1
+       cd $HOME/.bin/gnome-shell-extension-blyr/ && make local-install >> /dev/null 2>&1
 	   ;;
    Debian)
-       sudo apt update #>> /dev/null 2>&1
-       sudo apt install -qqy plank gnome-tweak-tool git build-essential cmake vim-nox python3-dev python3-pip zsh exuberant-ctags #>> /dev/null 2>&1
+       sudo apt update >> /dev/null 2>&1
+       sudo apt install -qqy plank gnome-tweak-tool git build-essential cmake vim-nox python3-dev python3-pip zsh exuberant-ctags >> /dev/null 2>&1
        _progress=20
        ProgressBar ${_progress} ${_end}
 	   tar -xf ${_install_dir}/files/exesse.tar.xz && mkdir -p ~/.themes/ && cp -r ${_install_dir}/themes/* ~/.themes/
@@ -87,8 +87,8 @@ case ${OS_VERSION} in
 	   mkdir ~/.local/share/plank/themes/ -p && cp -r ${_install_dir}/plank/* ~/.local/share/plank/themes/
        _progress=30
        ProgressBar ${_progress} ${_end}
-	   git clone https://github.com/yozoon/gnome-shell-extension-blyr.git $HOME/.bin/gnome-shell-extension-blyr #>> /dev/null 2>&1
-       cd $HOME/.bin/gnome-shell-extension-blyr/ && make local-install #>> /dev/null 2>&1
+	   git clone https://github.com/yozoon/gnome-shell-extension-blyr.git $HOME/.bin/gnome-shell-extension-blyr >> /dev/null 2>&1
+       cd $HOME/.bin/gnome-shell-extension-blyr/ && make local-install >> /dev/null 2>&1
        ;;
    *)
       echo 'ERROR: OS is not supported. Exiting installer now.'
@@ -100,8 +100,8 @@ esac
 cd ${_install_dir}
 
 # Folders creation
-mkdir $HOME/.bin #>> /dev/null 2>&1
-mkdir $HOME/Applications #>> /dev/null 2>&1
+mkdir $HOME/.bin >> /dev/null 2>&1
+mkdir $HOME/Applications >> /dev/null 2>&1
 
 # Google Cloud SDK installation
 curl https://sdk.cloud.google.com --output ${_install_dir}/gcp_install.sh --silent
@@ -122,22 +122,22 @@ ProgressBar ${_progress} ${_end}
 
 # Clone Vundle from GitHub
 git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim #>> /dev/null 2>&1
-sleep 10
+sleep 15
 _progress=65
 ProgressBar ${_progress} ${_end}
 
 # Install VIM plugins
-vim +PluginInstall +qall #>> /dev/null 2>&1
+vim +PluginInstall +qall >> /dev/null 2>&1
 _progress=75
 ProgressBar ${_progress} ${_end}
 
 # Compile YouCompleteMe
-python3 ~/.vim/bundle/YouCompleteMe/install.py --clang-completer #>> /dev/null 2>&1
+python3 ~/.vim/bundle/YouCompleteMe/install.py --clang-completer >> /dev/null 2>&1
 _progress=80
 ProgressBar ${_progress} ${_end}
 
 # Install Flake8
-python3 -m pip install flake8 #>> /dev/null 2>&1
+python3 -m pip install flake8 >> /dev/null 2>&1
 _progress=85
 ProgressBar ${_progress} ${_end}
 
@@ -161,7 +161,7 @@ echo "Select the same theme for Plank. Add **Plank** to autostartup."
 echo "In extensions set **blyr** to '10; 0.9; 1.00' for Activities + Panel."
 
 # Oh-my-zsh and custom setting installation
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" #>> /dev/null 2>&1
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" >> /dev/null 2>&1
 curl https://raw.githubusercontent.com/exesse/boxes.setup/main/files/radvan.zsh-theme --output $HOME/.oh-my-zsh/themes/radvan.zsh-theme --silent
 curl https://raw.githubusercontent.com/exesse/boxes.setup/main/files/zshrc --output $HOME/.zshrc --silent
 echo 'exec zsh' > $HOME/.bashrc
