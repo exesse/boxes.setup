@@ -102,14 +102,6 @@ chmod +x ${_install_dir}/gcp_install.sh && bash ${_install_dir}/gcp_install.sh -
 _progress=45
 ProgressBar ${_progress} ${_end}
 
-# Oh-my-zsh and custom setting installation
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" #>> /dev/null 2>&1
-cp ${_install_dir}/files/radvan.zsh-theme --output $HOME/.oh-my-zsh/themes/radvan.zsh-theme
-cp ${_install_dir}/files/zshrc --output $HOME/.zshrc
-echo 'exec zsh' > $HOME/.bashrc
-_progress=52
-ProgressBar ${_progress} ${_end}
-
 # Create necessary folders for python.vim
 rm -rf $HOME/.vim && rm -f $HOME/.vimrc
 mkdir -p $HOME/.vim/indent
@@ -154,11 +146,20 @@ _progress=95
 ProgressBar ${_progress} ${_end}
 
 # Activate the themes
-_progress=100
+_progress=97
 ProgressBar ${_progress} ${_end}
 
 printf "\nInstallation successfully finished.\n"
 echo "Start **gnome-tweak-tool** and select 'exesse*' in each respective category."
 echo "Select the same theme for Plank. Add **Plank** to autostartup."
 echo "In extensions set **blyr** to '10; 0.9; 1.00' for Activities + Panel."
+
+# Oh-my-zsh and custom setting installation
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" #>> /dev/null 2>&1
+curl https://raw.githubusercontent.com/exesse/boxes.setup/main/files/radvan.zsh-theme --output $HOME/.oh-my-zsh/themes/radvan.zsh-theme --silent
+curl https://raw.githubusercontent.com/exesse/boxes.setup/main/files/zshrc --output $HOME/.zshrc --silent
+echo 'exec zsh' > $HOME/.bashrc
+_progress=52
+ProgressBar ${_progress} ${_end}
+
 exit 0
