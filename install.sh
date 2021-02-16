@@ -50,7 +50,7 @@ case ${OS_VERSION} in
        ;;
    Ubuntu)
        sudo apt update #>> /dev/null 2>&1
-       sudo apt install plank gnome-tweak-tool git build-essential cmake vim python3-dev exuberant-ctags #>> /dev/null 2>&1
+       sudo apt install plank gnome-tweak-tool git build-essential cmake vim python3-dev python3-pip zsh exuberant-ctags #>> /dev/null 2>&1
        sudo apt remove gnome-shell-extension-ubuntu-dock #>> /dev/null 2>&1
        _progress=20
        ProgressBar ${_progress} ${_end}
@@ -65,7 +65,7 @@ case ${OS_VERSION} in
 	   ;;
    Debian)
        sudo apt update #>> /dev/null 2>&1
-       sudo apt install plank gnome-tweak-tool git build-essential cmake vim python3-dev exuberant-ctags #>> /dev/null 2>&1
+       sudo apt install plank gnome-tweak-tool git build-essential cmake vim python3-dev python3-pip zsh exuberant-ctags #>> /dev/null 2>&1
        _progress=20
        ProgressBar ${_progress} ${_end}
 	   curl https://github.com/exesse/boxes.setup/raw/main/files/exesse.tar.xz --output ${_install_dir}/exesse.tar.xz --silent
@@ -99,8 +99,8 @@ ProgressBar ${_progress} ${_end}
 
 # Oh-my-zsh and custom setting installation
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" #>> /dev/null 2>&1
-curl https://github.com/exesse/boxes.setup/raw/main/files/radvan.zsh-theme --output $HOME/.oh-my-zsh/themes/radvan.zsh-theme --silent
-curl https://github.com/exesse/boxes.setup/raw/main/files/zshrc --output $HOME/.zshrc --silent
+curl  https://raw.githubusercontent.com/exesse/boxes.setup/main/files/radvan.zsh-theme --output $HOME/.oh-my-zsh/themes/radvan.zsh-theme --silent
+curl https://raw.githubusercontent.com/exesse/boxes.setup/main/files/zshrc --output $HOME/.zshrc --silent
 echo 'exec zsh' > $HOME/.bashrc
 _progress=52
 ProgressBar ${_progress} ${_end}
@@ -112,13 +112,14 @@ _progress=55
 ProgressBar ${_progress} ${_end}
 
 # Download config files for python.vim from GitHub
-curl https://github.com/exesse/boxes.setup/raw/main/files/python.vim --output $HOME/.vim/indent/python.vim --silent
-curl https://github.com/exesse/boxes.setup/raw/main/files/vimrc --output $HOME/.vimrc --silent 
+curl https://raw.githubusercontent.com/exesse/boxes.setup/main/files/python.vim --output $HOME/.vim/indent/python.vim --silent
+curl https://raw.githubusercontent.com/exesse/boxes.setup/main/files/vimrc --output $HOME/.vimrc --silent
 _progress=60
 ProgressBar ${_progress} ${_end}
 
 # Clone Vundle from GitHub
 git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim #>> /dev/null 2>&1
+sleep 10
 _progress=65
 ProgressBar ${_progress} ${_end}
 
