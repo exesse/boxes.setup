@@ -10,7 +10,9 @@ ProgressBar () {
 	_done=$(printf "%${_done}s")
 	_left=$(printf "%${_left}s")
 
-printf "\rProgress : [${_done// /#}${_left// /-}] ${_progress}%%"}
+printf "\rProgress : [${_done// /#}${_left// /-}] ${_progress}%%"
+
+}
 
 # Identify working environment
 OS_VERSION=$(uname -v)
