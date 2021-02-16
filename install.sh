@@ -49,9 +49,13 @@ sleep 10
 
 # Start of the installation
 sudo printf "Installation started. Please wait.\n"
+_progress=5
+ProgressBar ${_progress} ${_end}
 
 # Create temporary install folder
 mkdir -p ${_install_dir} && cd ${_install_dir}
+_progress=10
+ProgressBar ${_progress} ${_end}
 
 # Install required packages while sudo is active
 case ${OS_VERSION} in
@@ -64,7 +68,7 @@ case ${OS_VERSION} in
        ;;
    Ubuntu)
        sudo apt update >> /dev/null 2>&1
-       sudo apt install -qqy plank gnome-tweak-tool git build-essential cmake vim-nox python3-dev python3-pip zsh exuberant-ctags >> /dev/null 2>&1
+       sudo apt install -qqy plank gnome-tweak-tool git build-essential cmake vim vim-nox python3-dev python3-pip zsh exuberant-ctags >> /dev/null 2>&1
        sudo apt remove -qqy gnome-shell-extension-ubuntu-dock >> /dev/null 2>&1
        _progress=20
        ProgressBar ${_progress} ${_end}
@@ -78,7 +82,7 @@ case ${OS_VERSION} in
 	   ;;
    Debian)
        sudo apt update >> /dev/null 2>&1
-       sudo apt install -qqy plank gnome-tweak-tool git build-essential cmake vim-nox python3-dev python3-pip zsh exuberant-ctags >> /dev/null 2>&1
+       sudo apt install -qqy plank gnome-tweak-tool git build-essential cmake vim vim-nox python3-dev python3-pip zsh exuberant-ctags >> /dev/null 2>&1
        _progress=20
        ProgressBar ${_progress} ${_end}
 	   tar -xf ${_install_dir}/files/exesse.tar.xz && mkdir -p ~/.themes/ && cp -r ${_install_dir}/themes/* ~/.themes/
@@ -120,7 +124,7 @@ _progress=60
 ProgressBar ${_progress} ${_end}
 
 # Clone Vundle from GitHub
-git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim #>> /dev/null 2>&1
+git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim >> /dev/null 2>&1
 sleep 15
 _progress=65
 ProgressBar ${_progress} ${_end}
@@ -151,7 +155,7 @@ _progress=95
 ProgressBar ${_progress} ${_end}
 
 # Activate the themes
-_progress=97
+_progress=100
 ProgressBar ${_progress} ${_end}
 
 printf "\nInstallation successfully finished.\n"
@@ -164,7 +168,4 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 curl https://raw.githubusercontent.com/exesse/boxes.setup/main/files/radvan.zsh-theme --output $HOME/.oh-my-zsh/themes/radvan.zsh-theme --silent
 curl https://raw.githubusercontent.com/exesse/boxes.setup/main/files/zshrc --output $HOME/.zshrc --silent
 echo 'exec zsh' > $HOME/.bashrc
-_progress=100
-ProgressBar ${_progress} ${_end}
-
 exit 0
