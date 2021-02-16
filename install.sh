@@ -40,17 +40,17 @@ mv $HOME/.zshrc $HOME/backup/.zshrc >> /dev/null 2>&1
 mv $HOME/.vimrc $HOME/backup/.vimrc >> /dev/null 2>&1
 mv ${_install_dir} $HOME/backup${_install_dir} >> /dev/null 2>&1
 
+# Start of the installation
+sudo printf "Installation started. Please wait.\n"
+_progress=0
+ProgressBar ${_progress} ${_end}
+
 # Create temporary install folder
 mkdir -p ${_install_dir} && cd ${_install_dir}
 
 # Clone required files into _install_dir
 git clone https://github.com/exesse/boxes.setup ${_install_dir} >> /dev/null 2>&1
 sleep 10
-
-# Start of the installation
-sudo printf "Installation started. Please wait.\n"
-_progress=5
-ProgressBar ${_progress} ${_end}
 
 # Create temporary install folder
 mkdir -p ${_install_dir} && cd ${_install_dir}
@@ -165,7 +165,7 @@ echo "Start **gnome-tweak-tool** and select 'exesse*' in each respective categor
 echo "Select the same theme for Plank. Add **Plank** to autostartup."
 echo "In extensions set **blyr** to '10; 0.9; 1.00' for Activities + Panel."
 echo "============================================================================"
-sleep 10
+echo ""
 
 # Oh-my-zsh and custom setting installation
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
