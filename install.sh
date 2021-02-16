@@ -153,5 +153,3 @@ printf "\nInstallation successfully finished.\n"
 echo "Start **gnome-tweak-tool** and select 'exesse*' in each respective category."
 echo "Select the same theme for Plank. Add **Plank** to autostartup."
 echo "In extensions set **blyr** to '10; 0.9; 1.00' for Activities + Panel."
-
-exit 0
