@@ -130,7 +130,7 @@ _progress=65
 ProgressBar ${_progress} ${_end}
 
 # Install VIM plugins
-vim +PluginInstall +qall #>> /dev/null 2>&1
+vim +PluginInstall +qall >> /dev/null 2>&1
 _progress=75
 ProgressBar ${_progress} ${_end}
 
@@ -159,9 +159,13 @@ _progress=100
 ProgressBar ${_progress} ${_end}
 
 printf "\nInstallation successfully finished.\n"
+echo ""
+echo "============================================================================"
 echo "Start **gnome-tweak-tool** and select 'exesse*' in each respective category."
 echo "Select the same theme for Plank. Add **Plank** to autostartup."
 echo "In extensions set **blyr** to '10; 0.9; 1.00' for Activities + Panel."
+echo "============================================================================"
+sleep 10
 
 # Oh-my-zsh and custom setting installation
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
