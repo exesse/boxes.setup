@@ -40,16 +40,16 @@ mkdir -p $(_install_dir) && cd &(_install_dir)
 # Install required packages while sudo is active
 case ${OS_VERSION} in
    Darwin)
-       git clone https://github.com/Homebrew/brew $HOME/.brew >> /dev/null 2>&1
-       xcode-select --install >> /dev/null 2>&1
-       brew install vim ctags cmake >> /dev/null 2>&1
+       git clone https://github.com/Homebrew/brew $HOME/.brew #>> /dev/null 2>&1
+       xcode-select --install #>> /dev/null 2>&1
+       brew install vim ctags cmake #>> /dev/null 2>&1
        _progress=20
        ProgressBar ${_progress} ${_end}
        ;;
    Ubuntu)
-       sudo apt update >> /dev/null 2>&1
-       sudo apt install plank gnome-tweak-tool git build-essential cmake vim python3-dev exuberant-ctags >> /dev/null 2>&1
-       sudo apt remove gnome-shell-extension-ubuntu-dock >> /dev/null 2>&1
+       sudo apt update #>> /dev/null 2>&1
+       sudo apt install plank gnome-tweak-tool git build-essential cmake vim python3-dev exuberant-ctags #>> /dev/null 2>&1
+       sudo apt remove gnome-shell-extension-ubuntu-dock #>> /dev/null 2>&1
        _progress=20
        ProgressBar ${_progress} ${_end}
        curl https://github.com/exesse/boxes.setup/raw/main/files/exesse.tar.xz --output $(_install_dir)/exesse.tar.xz --silent
@@ -59,11 +59,11 @@ case ${OS_VERSION} in
        _progress=30
        ProgressBar ${_progress} ${_end}
 	   git clone https://github.com/yozoon/gnome-shell-extension-blyr.git $HOME/.bin/gnome-shell-extension-blyr
-       cd $HOME/.bin/gnome-shell-extension-blyr/ && make local-install >> /dev/null 2>&1
+       cd $HOME/.bin/gnome-shell-extension-blyr/ && make local-install #>> /dev/null 2>&1
 	   ;;
    Debian)
-       sudo apt update >> /dev/null 2>&1
-       sudo apt install plank gnome-tweak-tool git build-essential cmake vim python3-dev exuberant-ctags >> /dev/null 2>&1
+       sudo apt update #>> /dev/null 2>&1
+       sudo apt install plank gnome-tweak-tool git build-essential cmake vim python3-dev exuberant-ctags #>> /dev/null 2>&1
        _progress=20
        ProgressBar ${_progress} ${_end}
 	   curl https://github.com/exesse/boxes.setup/raw/main/files/exesse.tar.xz --output $(_install_dir)/exesse.tar.xz --silent
@@ -73,7 +73,7 @@ case ${OS_VERSION} in
        _progress=30
        ProgressBar ${_progress} ${_end}
 	   git clone https://github.com/yozoon/gnome-shell-extension-blyr.git $HOME/.bin/gnome-shell-extension-blyr
-       cd $HOME/.bin/gnome-shell-extension-blyr/ && make local-install >> /dev/null 2>&1
+       cd $HOME/.bin/gnome-shell-extension-blyr/ && make local-install #>> /dev/null 2>&1
        ;;
    *)
       echo 'ERROR: OS is not supported. Exiting installer now.'
@@ -85,18 +85,18 @@ esac
 cd $(_install_dir)
 
 # Folders creation
-rm $HOME/.oh-my-zsh >> /dev/null 2>&1
-mkdir $HOME/.bin >> /dev/null 2>&1
-mkdir $HOME/Applications >> /dev/null 2>&1
+rm $HOME/.oh-my-zsh #>> /dev/null 2>&1
+mkdir $HOME/.bin #>> /dev/null 2>&1
+mkdir $HOME/Applications #>> /dev/null 2>&1
 
 # Google Cloud SDK installation
 curl https://sdk.cloud.google.com --output $(_install_dir)/gcp_install.sh --silent
-chmod +x $(_install_dir)/gcp_install.sh && bash $(_install_dir)/gcp_install.sh --disable-prompts --install-dir=$HOME/.bin >> /dev/null 2>&1
+chmod +x $(_install_dir)/gcp_install.sh && bash $(_install_dir)/gcp_install.sh --disable-prompts --install-dir=$HOME/.bin #>> /dev/null 2>&1
 _progress=45
 ProgressBar ${_progress} ${_end}gl
 
 # Oh-my-zsh and custom setting installation
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" >> /dev/null 2>&1
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" #>> /dev/null 2>&1
 curl https://github.com/exesse/boxes.setup/raw/main/files/radvan.zsh-theme --output $HOME/.oh-my-zsh/themes/radvan.zsh-theme --silent
 curl https://github.com/exesse/boxes.setup/raw/main/files/zshrc --output $HOME/.zshrc --silent
 echo 'exec zsh' > $HOME/.bashrc
@@ -116,22 +116,22 @@ _progress=60
 ProgressBar ${_progress} ${_end}
 
 # Clone Vundle from GitHub
-git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim >> /dev/null 2>&1
+git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim #>> /dev/null 2>&1
 _progress=65
 ProgressBar ${_progress} ${_end}
 
 # Install VIM plugins
-vim +PluginInstall +qall >> /dev/null 2>&1
+vim +PluginInstall +qall #>> /dev/null 2>&1
 _progress=75
 ProgressBar ${_progress} ${_end}
 
 # Compile YouCompleteMe
-python3 ~/.vim/bundle/YouCompleteMe/install.py --clang-completer >> /dev/null 2>&1
+python3 ~/.vim/bundle/YouCompleteMe/install.py --clang-completer #>> /dev/null 2>&1
 _progress=80
 ProgressBar ${_progress} ${_end}
 
 # Install Flake8
-python3 -m pip install flake8 >> /dev/null 2>&1
+python3 -m pip install flake8 #>> /dev/null 2>&1
 _progress=85
 ProgressBar ${_progress} ${_end}
 
@@ -155,4 +155,3 @@ echo "Select the same theme for Plank. Add **Plank** to autostartup."
 echo "In extensions set **blyr** to '10; 0.9; 1.00' for Activities + Panel."
 
 exit 0
-
