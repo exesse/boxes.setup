@@ -36,7 +36,7 @@ fi
 mkdir -p ${_install_dir} && cd ${_install_dir}
 
 # Clone required files into _install_dir
-git clone git@github.com:exesse/boxes.setup.git ${_install_dir} #>> /dev/null 2>&1
+git clone https://github.com/exesse/boxes.setup ${_install_dir} #>> /dev/null 2>&1
 sleep 10
 
 # Start of the installation
