@@ -32,6 +32,14 @@ else
     exit 1
 fi
 
+# Hash previous settings
+mv $HOME/.oh-my-zsh $HOME/backup/.oh-my-zsh  >> /dev/null 2>&1
+mv $HOME/.bin $HOME/backup/.bin >> /dev/null 2>&1
+mv $HOME/.vim $HOME/backup/.vim >> /dev/null 2>&1
+mv $HOME/.zshrc $HOME/backup/.zshrc >> /dev/null 2>&1
+mv $HOME/.vimrc $HOME/backup/.vimrc >> /dev/null 2>&1
+mv ${_install_dir} $HOME/backup${_install_dir} >> /dev/null 2>&1
+
 # Create temporary install folder
 mkdir -p ${_install_dir} && cd ${_install_dir}
 
@@ -61,12 +69,12 @@ case ${OS_VERSION} in
        sudo apt remove -qqy gnome-shell-extension-ubuntu-dock #>> /dev/null 2>&1
        _progress=20
        ProgressBar ${_progress} ${_end}
-	   tar -xf ${_install_dir}/exesse.tar.xz && mkdir -p ~/.themes/ && cp -r ${_install_dir}/themes/* ~/.themes/
+	   tar -xf ${_install_dir}/files/exesse.tar.xz && mkdir -p ~/.themes/ && cp -r ${_install_dir}/files/themes/* ~/.themes/
 	   mkdir -p ~/.icons/ && cp -r ${_install_dir}/files/icons/* ~/.icons/
 	   mkdir ~/.local/share/plank/themes/ -p && cp -r ${_install_dir}/files/plank/* ~/.local/share/plank/themes/
        _progress=30
        ProgressBar ${_progress} ${_end}
-	   git clone https://github.com/yozoon/gnome-shell-extension-blyr.git $HOME/.bin/gnome-shell-extension-blyr
+	   git clone https://github.com/yozoon/gnome-shell-extension-blyr.git $HOME/.bin/gnome-shell-extension-blyr #>> /dev/null 2>&1
        cd $HOME/.bin/gnome-shell-extension-blyr/ && make local-install #>> /dev/null 2>&1
 	   ;;
    Debian)
@@ -74,12 +82,12 @@ case ${OS_VERSION} in
        sudo apt install -qqy plank gnome-tweak-tool git build-essential cmake vim-nox python3-dev python3-pip zsh exuberant-ctags #>> /dev/null 2>&1
        _progress=20
        ProgressBar ${_progress} ${_end}
-	   tar -xf ${_install_dir}/exesse.tar.xz && mkdir -p ~/.themes/ && cp -r ${_install_dir}/themes/* ~/.themes/
+	   tar -xf ${_install_dir}/files/exesse.tar.xz && mkdir -p ~/.themes/ && cp -r ${_install_dir}/files/themes/* ~/.themes/
 	   mkdir -p ~/.icons/ && cp -r ${_install_dir}/files/icons/* ~/.icons/
 	   mkdir ~/.local/share/plank/themes/ -p && cp -r ${_install_dir}/files/plank/* ~/.local/share/plank/themes/
        _progress=30
        ProgressBar ${_progress} ${_end}
-	   git clone https://github.com/yozoon/gnome-shell-extension-blyr.git $HOME/.bin/gnome-shell-extension-blyr
+	   git clone https://github.com/yozoon/gnome-shell-extension-blyr.git $HOME/.bin/gnome-shell-extension-blyr #>> /dev/null 2>&1
        cd $HOME/.bin/gnome-shell-extension-blyr/ && make local-install #>> /dev/null 2>&1
        ;;
    *)
@@ -92,7 +100,6 @@ esac
 cd ${_install_dir}
 
 # Folders creation
-rm $HOME/.oh-my-zsh #>> /dev/null 2>&1
 mkdir $HOME/.bin #>> /dev/null 2>&1
 mkdir $HOME/Applications #>> /dev/null 2>&1
 
@@ -103,7 +110,6 @@ _progress=45
 ProgressBar ${_progress} ${_end}
 
 # Create necessary folders for python.vim
-rm -rf $HOME/.vim && rm -f $HOME/.vimrc
 mkdir -p $HOME/.vim/indent
 _progress=55
 ProgressBar ${_progress} ${_end}
