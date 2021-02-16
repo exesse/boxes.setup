@@ -93,7 +93,7 @@ mkdir $HOME/Applications #>> /dev/null 2>&1
 curl https://sdk.cloud.google.com --output $(_install_dir)/gcp_install.sh --silent
 chmod +x $(_install_dir)/gcp_install.sh && bash $(_install_dir)/gcp_install.sh --disable-prompts --install-dir=$HOME/.bin #>> /dev/null 2>&1
 _progress=45
-ProgressBar ${_progress} ${_end}gl
+ProgressBar ${_progress} ${_end}
 
 # Oh-my-zsh and custom setting installation
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" #>> /dev/null 2>&1
