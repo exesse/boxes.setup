@@ -10,8 +10,7 @@ ProgressBar () {
 	_done=$(printf "%${_done}s")
 	_left=$(printf "%${_left}s")
 
-printf "\rProgress : [${_done// /#}${_left// /-}] ${_progress}%%"
-}
+printf "\rProgress : [${_done// /#}${_left// /-}] ${_progress}%%"}
 
 # Identify working environment
 OS_VERSION=$(uname -v)
@@ -141,7 +140,7 @@ echo 'set editing-mode vi' > ~/.inputrc
 _progress=90
 ProgressBar ${_progress} ${_end}
 
-# Perfrom cleanup after the installation
+# Perform cleanup after the installation
 cd $HOME && rm -rf $(_install_dir)
 _progress=95
 ProgressBar ${_progress} ${_end}
