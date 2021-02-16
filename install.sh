@@ -62,8 +62,8 @@ case ${OS_VERSION} in
        _progress=20
        ProgressBar ${_progress} ${_end}
 	   tar -xf ${_install_dir}/exesse.tar.xz && mkdir -p ~/.themes/ && cp -r ${_install_dir}/themes/* ~/.themes/
-	   mkdir -p ~/.icons/ && cp -r ${_install_dir}/icons/* ~/.icons/
-	   mkdir ~/.local/share/plank/themes/ -p && cp -r ${_install_dir}/plank/* ~/.local/share/plank/themes/
+	   mkdir -p ~/.icons/ && cp -r ${_install_dir}/files/icons/* ~/.icons/
+	   mkdir ~/.local/share/plank/themes/ -p && cp -r ${_install_dir}/files/plank/* ~/.local/share/plank/themes/
        _progress=30
        ProgressBar ${_progress} ${_end}
 	   git clone https://github.com/yozoon/gnome-shell-extension-blyr.git $HOME/.bin/gnome-shell-extension-blyr
@@ -75,8 +75,8 @@ case ${OS_VERSION} in
        _progress=20
        ProgressBar ${_progress} ${_end}
 	   tar -xf ${_install_dir}/exesse.tar.xz && mkdir -p ~/.themes/ && cp -r ${_install_dir}/themes/* ~/.themes/
-	   mkdir -p ~/.icons/ && cp -r ${_install_dir}/icons/* ~/.icons/
-	   mkdir ~/.local/share/plank/themes/ -p && cp -r ${_install_dir}/plank/* ~/.local/share/plank/themes/
+	   mkdir -p ~/.icons/ && cp -r ${_install_dir}/files/icons/* ~/.icons/
+	   mkdir ~/.local/share/plank/themes/ -p && cp -r ${_install_dir}/files/plank/* ~/.local/share/plank/themes/
        _progress=30
        ProgressBar ${_progress} ${_end}
 	   git clone https://github.com/yozoon/gnome-shell-extension-blyr.git $HOME/.bin/gnome-shell-extension-blyr
