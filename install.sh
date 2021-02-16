@@ -69,9 +69,9 @@ case ${OS_VERSION} in
        sudo apt remove -qqy gnome-shell-extension-ubuntu-dock #>> /dev/null 2>&1
        _progress=20
        ProgressBar ${_progress} ${_end}
-	   tar -xf ${_install_dir}/files/exesse.tar.xz && mkdir -p ~/.themes/ && cp -r ${_install_dir}/files/themes/* ~/.themes/
-	   mkdir -p ~/.icons/ && cp -r ${_install_dir}/files/icons/* ~/.icons/
-	   mkdir ~/.local/share/plank/themes/ -p && cp -r ${_install_dir}/files/plank/* ~/.local/share/plank/themes/
+	   tar -xf ${_install_dir}/files/exesse.tar.xz && mkdir -p ~/.themes/ && cp -r ${_install_dir}/themes/* ~/.themes/
+	   mkdir -p ~/.icons/ && cp -r ${_install_dir}/icons/* ~/.icons/
+	   mkdir ~/.local/share/plank/themes/ -p && cp -r ${_install_dir}/plank/* ~/.local/share/plank/themes/
        _progress=30
        ProgressBar ${_progress} ${_end}
 	   git clone https://github.com/yozoon/gnome-shell-extension-blyr.git $HOME/.bin/gnome-shell-extension-blyr #>> /dev/null 2>&1
@@ -82,9 +82,9 @@ case ${OS_VERSION} in
        sudo apt install -qqy plank gnome-tweak-tool git build-essential cmake vim-nox python3-dev python3-pip zsh exuberant-ctags #>> /dev/null 2>&1
        _progress=20
        ProgressBar ${_progress} ${_end}
-	   tar -xf ${_install_dir}/files/exesse.tar.xz && mkdir -p ~/.themes/ && cp -r ${_install_dir}/files/themes/* ~/.themes/
-	   mkdir -p ~/.icons/ && cp -r ${_install_dir}/files/icons/* ~/.icons/
-	   mkdir ~/.local/share/plank/themes/ -p && cp -r ${_install_dir}/files/plank/* ~/.local/share/plank/themes/
+	   tar -xf ${_install_dir}/files/exesse.tar.xz && mkdir -p ~/.themes/ && cp -r ${_install_dir}/themes/* ~/.themes/
+	   mkdir -p ~/.icons/ && cp -r ${_install_dir}/icons/* ~/.icons/
+	   mkdir ~/.local/share/plank/themes/ -p && cp -r ${_install_dir}/plank/* ~/.local/share/plank/themes/
        _progress=30
        ProgressBar ${_progress} ${_end}
 	   git clone https://github.com/yozoon/gnome-shell-extension-blyr.git $HOME/.bin/gnome-shell-extension-blyr #>> /dev/null 2>&1
