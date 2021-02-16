@@ -165,7 +165,7 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 curl https://raw.githubusercontent.com/exesse/boxes.setup/main/files/radvan.zsh-theme --output $HOME/.oh-my-zsh/themes/radvan.zsh-theme --silent
 curl https://raw.githubusercontent.com/exesse/boxes.setup/main/files/zshrc --output $HOME/.zshrc --silent
 echo 'exec zsh' > $HOME/.bashrc
-_progress=52
+_progress=100
 ProgressBar ${_progress} ${_end}
 
 exit 0
