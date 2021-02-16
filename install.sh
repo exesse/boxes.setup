@@ -32,6 +32,13 @@ else
     exit 1
 fi
 
+# Create temporary install folder
+mkdir -p ${_install_dir} && cd ${_install_dir}
+
+# Clone required files into _install_dir
+git clone git@github.com:exesse/boxes.setup.git ${_install_dir} #>> /dev/null 2>&1
+sleep 10
+
 # Start of the installation
 printf "Please provide your password for the installation.\n"
 sudo printf "Installation started. Please wait.\n"
@@ -50,11 +57,10 @@ case ${OS_VERSION} in
        ;;
    Ubuntu)
        sudo apt update #>> /dev/null 2>&1
-       sudo apt install plank gnome-tweak-tool git build-essential cmake vim python3-dev python3-pip zsh exuberant-ctags #>> /dev/null 2>&1
+       sudo apt install plank gnome-tweak-tool git build-essential cmake vim-nox python3-dev python3-pip zsh exuberant-ctags #>> /dev/null 2>&1
        sudo apt remove gnome-shell-extension-ubuntu-dock #>> /dev/null 2>&1
        _progress=20
        ProgressBar ${_progress} ${_end}
-       curl https://github.com/exesse/boxes.setup/raw/main/files/exesse.tar.xz --output ${_install_dir}/exesse.tar.xz --silent
 	   tar -xf ${_install_dir}/exesse.tar.xz && mkdir -p ~/.themes/ && cp -r ${_install_dir}/themes/* ~/.themes/
 	   mkdir -p ~/.icons/ && cp -r ${_install_dir}/icons/* ~/.icons/
 	   mkdir ~/.local/share/plank/themes/ -p && cp -r ${_install_dir}/plank/* ~/.local/share/plank/themes/
@@ -65,10 +71,9 @@ case ${OS_VERSION} in
 	   ;;
    Debian)
        sudo apt update #>> /dev/null 2>&1
-       sudo apt install plank gnome-tweak-tool git build-essential cmake vim python3-dev python3-pip zsh exuberant-ctags #>> /dev/null 2>&1
+       sudo apt install plank gnome-tweak-tool git build-essential cmake vim-nox python3-dev python3-pip zsh exuberant-ctags #>> /dev/null 2>&1
        _progress=20
        ProgressBar ${_progress} ${_end}
-	   curl https://github.com/exesse/boxes.setup/raw/main/files/exesse.tar.xz --output ${_install_dir}/exesse.tar.xz --silent
 	   tar -xf ${_install_dir}/exesse.tar.xz && mkdir -p ~/.themes/ && cp -r ${_install_dir}/themes/* ~/.themes/
 	   mkdir -p ~/.icons/ && cp -r ${_install_dir}/icons/* ~/.icons/
 	   mkdir ~/.local/share/plank/themes/ -p && cp -r ${_install_dir}/plank/* ~/.local/share/plank/themes/
@@ -99,8 +104,8 @@ ProgressBar ${_progress} ${_end}
 
 # Oh-my-zsh and custom setting installation
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" #>> /dev/null 2>&1
-curl  https://raw.githubusercontent.com/exesse/boxes.setup/main/files/radvan.zsh-theme --output $HOME/.oh-my-zsh/themes/radvan.zsh-theme --silent
-curl https://raw.githubusercontent.com/exesse/boxes.setup/main/files/zshrc --output $HOME/.zshrc --silent
+cp ${_install_dir}/files/radvan.zsh-theme --output $HOME/.oh-my-zsh/themes/radvan.zsh-theme
+cp ${_install_dir}/files/zshrc --output $HOME/.zshrc
 echo 'exec zsh' > $HOME/.bashrc
 _progress=52
 ProgressBar ${_progress} ${_end}
@@ -112,8 +117,8 @@ _progress=55
 ProgressBar ${_progress} ${_end}
 
 # Download config files for python.vim from GitHub
-curl https://raw.githubusercontent.com/exesse/boxes.setup/main/files/python.vim --output $HOME/.vim/indent/python.vim --silent
-curl https://raw.githubusercontent.com/exesse/boxes.setup/main/files/vimrc --output $HOME/.vimrc --silent
+cp ${_install_dir}/files/python.vim --output $HOME/.vim/indent/python.vim
+cp ${_install_dir}/files/vimrc --output $HOME/.vimrc
 _progress=60
 ProgressBar ${_progress} ${_end}
 
