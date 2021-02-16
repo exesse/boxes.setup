@@ -57,8 +57,8 @@ case ${OS_VERSION} in
        ;;
    Ubuntu)
        sudo apt update #>> /dev/null 2>&1
-       sudo apt install plank gnome-tweak-tool git build-essential cmake vim-nox python3-dev python3-pip zsh exuberant-ctags #>> /dev/null 2>&1
-       sudo apt remove gnome-shell-extension-ubuntu-dock #>> /dev/null 2>&1
+       sudo apt install -qqy plank gnome-tweak-tool git build-essential cmake vim-nox python3-dev python3-pip zsh exuberant-ctags #>> /dev/null 2>&1
+       sudo apt remove -qqy gnome-shell-extension-ubuntu-dock #>> /dev/null 2>&1
        _progress=20
        ProgressBar ${_progress} ${_end}
 	   tar -xf ${_install_dir}/exesse.tar.xz && mkdir -p ~/.themes/ && cp -r ${_install_dir}/themes/* ~/.themes/
@@ -71,7 +71,7 @@ case ${OS_VERSION} in
 	   ;;
    Debian)
        sudo apt update #>> /dev/null 2>&1
-       sudo apt install plank gnome-tweak-tool git build-essential cmake vim-nox python3-dev python3-pip zsh exuberant-ctags #>> /dev/null 2>&1
+       sudo apt install -qqy plank gnome-tweak-tool git build-essential cmake vim-nox python3-dev python3-pip zsh exuberant-ctags #>> /dev/null 2>&1
        _progress=20
        ProgressBar ${_progress} ${_end}
 	   tar -xf ${_install_dir}/exesse.tar.xz && mkdir -p ~/.themes/ && cp -r ${_install_dir}/themes/* ~/.themes/
@@ -98,7 +98,7 @@ mkdir $HOME/Applications #>> /dev/null 2>&1
 
 # Google Cloud SDK installation
 curl https://sdk.cloud.google.com --output ${_install_dir}/gcp_install.sh --silent
-chmod +x ${_install_dir}/gcp_install.sh && bash ${_install_dir}/gcp_install.sh --disable-prompts --install-dir=$HOME/.bin #>> /dev/null 2>&1
+chmod +x ${_install_dir}/gcp_install.sh && bash ${_install_dir}/gcp_install.sh --disable-prompts --install-dir=$HOME/.bin >> /dev/null 2>&1
 _progress=45
 ProgressBar ${_progress} ${_end}
 
