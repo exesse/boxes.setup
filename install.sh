@@ -37,7 +37,7 @@ printf "Please provide your password for the installation.\n"
 sudo printf "Installation started. Please wait.\n"
 
 # Create temporary install folder
-mkdir -p $(_install_dir) && cd &(_install_dir) 
+mkdir -p ${_install_dir} && cd ${_install_dir}
 
 # Install required packages while sudo is active
 case ${OS_VERSION} in
@@ -54,10 +54,10 @@ case ${OS_VERSION} in
        sudo apt remove gnome-shell-extension-ubuntu-dock #>> /dev/null 2>&1
        _progress=20
        ProgressBar ${_progress} ${_end}
-       curl https://github.com/exesse/boxes.setup/raw/main/files/exesse.tar.xz --output $(_install_dir)/exesse.tar.xz --silent
-	   tar -xf $(_install_dir)/exesse.tar.xz && mkdir -p ~/.themes/ && cp -r $(_install_dir)/themes/* ~/.themes/
-	   mkdir -p ~/.icons/ && cp -r $(_install_dir)/icons/* ~/.icons/
-	   mkdir ~/.local/share/plank/themes/ -p && cp -r $(_install_dir)/plank/* ~/.local/share/plank/themes/
+       curl https://github.com/exesse/boxes.setup/raw/main/files/exesse.tar.xz --output ${_install_dir}/exesse.tar.xz --silent
+	   tar -xf ${_install_dir}/exesse.tar.xz && mkdir -p ~/.themes/ && cp -r ${_install_dir}/themes/* ~/.themes/
+	   mkdir -p ~/.icons/ && cp -r ${_install_dir}/icons/* ~/.icons/
+	   mkdir ~/.local/share/plank/themes/ -p && cp -r ${_install_dir}/plank/* ~/.local/share/plank/themes/
        _progress=30
        ProgressBar ${_progress} ${_end}
 	   git clone https://github.com/yozoon/gnome-shell-extension-blyr.git $HOME/.bin/gnome-shell-extension-blyr
@@ -68,10 +68,10 @@ case ${OS_VERSION} in
        sudo apt install plank gnome-tweak-tool git build-essential cmake vim python3-dev exuberant-ctags #>> /dev/null 2>&1
        _progress=20
        ProgressBar ${_progress} ${_end}
-	   curl https://github.com/exesse/boxes.setup/raw/main/files/exesse.tar.xz --output $(_install_dir)/exesse.tar.xz --silent
-	   tar -xf $(_install_dir)/exesse.tar.xz && mkdir -p ~/.themes/ && cp -r $(_install_dir)/themes/* ~/.themes/
-	   mkdir -p ~/.icons/ && cp -r $(_install_dir)/icons/* ~/.icons/
-	   mkdir ~/.local/share/plank/themes/ -p && cp -r $(_install_dir)/plank/* ~/.local/share/plank/themes/
+	   curl https://github.com/exesse/boxes.setup/raw/main/files/exesse.tar.xz --output ${_install_dir}/exesse.tar.xz --silent
+	   tar -xf ${_install_dir}/exesse.tar.xz && mkdir -p ~/.themes/ && cp -r ${_install_dir}/themes/* ~/.themes/
+	   mkdir -p ~/.icons/ && cp -r ${_install_dir}/icons/* ~/.icons/
+	   mkdir ~/.local/share/plank/themes/ -p && cp -r ${_install_dir}/plank/* ~/.local/share/plank/themes/
        _progress=30
        ProgressBar ${_progress} ${_end}
 	   git clone https://github.com/yozoon/gnome-shell-extension-blyr.git $HOME/.bin/gnome-shell-extension-blyr
@@ -84,7 +84,7 @@ case ${OS_VERSION} in
 esac
 
 # Return to the workdir
-cd $(_install_dir)
+cd ${_install_dir}
 
 # Folders creation
 rm $HOME/.oh-my-zsh #>> /dev/null 2>&1
@@ -92,8 +92,8 @@ mkdir $HOME/.bin #>> /dev/null 2>&1
 mkdir $HOME/Applications #>> /dev/null 2>&1
 
 # Google Cloud SDK installation
-curl https://sdk.cloud.google.com --output $(_install_dir)/gcp_install.sh --silent
-chmod +x $(_install_dir)/gcp_install.sh && bash $(_install_dir)/gcp_install.sh --disable-prompts --install-dir=$HOME/.bin #>> /dev/null 2>&1
+curl https://sdk.cloud.google.com --output ${_install_dir}/gcp_install.sh --silent
+chmod +x ${_install_dir}/gcp_install.sh && bash ${_install_dir}/gcp_install.sh --disable-prompts --install-dir=$HOME/.bin #>> /dev/null 2>&1
 _progress=45
 ProgressBar ${_progress} ${_end}
 
@@ -143,7 +143,7 @@ _progress=90
 ProgressBar ${_progress} ${_end}
 
 # Perform cleanup after the installation
-cd $HOME && rm -rf $(_install_dir)
+cd $HOME && rm -rf ${_install_dir}
 _progress=95
 ProgressBar ${_progress} ${_end}
 
