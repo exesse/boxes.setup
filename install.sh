@@ -91,9 +91,9 @@ if [[ $(uname -o) =~ "Linux" ]]; then
 	mkdir -p ~/.icons/ && cp -r ${_install_dir}/icons/* ~/.icons/
 	mkdir ~/.local/share/plank/themes/ -p && cp -r ${_install_dir}/plank/* ~/.local/share/plank/themes/
     _progress=30
-    git clone https://github.com/yozoon/gnome-shell-extension-blyr.git
+    git clone https://github.com/yozoon/gnome-shell-extension-blyr.git >> /dev/null 2>&1
     cd gnome-shell-extension-blyr/
-    make local-install
+    make local-install >> /dev/null 2>&1
     ProgressBar ${_progress} ${_end}
 fi
 
