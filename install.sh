@@ -48,7 +48,6 @@ git clone https://github.com/exesse/boxes.setup ${_install_dir} >> /dev/null 2>&
 sleep 10
 
 # Start of the installation
-printf "Please provide your password for the installation.\n"
 sudo printf "Installation started. Please wait.\n"
 
 # Create temporary install folder
@@ -115,8 +114,8 @@ _progress=55
 ProgressBar ${_progress} ${_end}
 
 # Download config files for python.vim from GitHub
-cp ${_install_dir}/files/python.vim --output $HOME/.vim/indent/python.vim
-cp ${_install_dir}/files/vimrc --output $HOME/.vimrc
+cp ${_install_dir}/files/python.vim $HOME/.vim/indent/python.vim
+cp ${_install_dir}/files/vimrc $HOME/.vimrc
 _progress=60
 ProgressBar ${_progress} ${_end}
 
@@ -127,7 +126,7 @@ _progress=65
 ProgressBar ${_progress} ${_end}
 
 # Install VIM plugins
-vim +PluginInstall +qall >> /dev/null 2>&1
+vim +PluginInstall +qall #>> /dev/null 2>&1
 _progress=75
 ProgressBar ${_progress} ${_end}
 
@@ -161,7 +160,7 @@ echo "Select the same theme for Plank. Add **Plank** to autostartup."
 echo "In extensions set **blyr** to '10; 0.9; 1.00' for Activities + Panel."
 
 # Oh-my-zsh and custom setting installation
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" >> /dev/null 2>&1
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 curl https://raw.githubusercontent.com/exesse/boxes.setup/main/files/radvan.zsh-theme --output $HOME/.oh-my-zsh/themes/radvan.zsh-theme --silent
 curl https://raw.githubusercontent.com/exesse/boxes.setup/main/files/zshrc --output $HOME/.zshrc --silent
 echo 'exec zsh' > $HOME/.bashrc
