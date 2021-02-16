@@ -10,7 +10,8 @@ ProgressBar () {
 	_done=$(printf "%${_done}s")
 	_left=$(printf "%${_left}s")
 
-printf "\rProgress : [${_done// /#}${_left// /-}] ${_progress}%%"}
+printf "\rProgress : [${_done// /#}${_left// /-}] ${_progress}%%"
+}
 
 # Identify working environment
 OS_VERSION=$(uname -v)
@@ -153,3 +154,4 @@ printf "\nInstallation successfully finished.\n"
 echo "Start **gnome-tweak-tool** and select 'exesse*' in each respective category."
 echo "Select the same theme for Plank. Add **Plank** to autostartup."
 echo "In extensions set **blyr** to '10; 0.9; 1.00' for Activities + Panel."
+exit 0
